@@ -9,3 +9,6 @@ in
 lib.optionalAttrs (builtins.pathExists ./pkgs/twin/default.nix) {
   twin = callPackage ./pkgs/twin/default.nix { };
 }
+// lib.optionalAttrs (builtins.pathExists ./pkgs/gh-contribs/default.nix) {
+  gh-contribs = callPackage ./pkgs/gh-contribs/default.nix { };
+}
