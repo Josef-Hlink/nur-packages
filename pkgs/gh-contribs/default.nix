@@ -9,22 +9,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1c8xn4l9m50vd152daj17092iz1p1gx3ilfprvvvbqvffl5lsbd8";
-    aarch64-linux = "0x3v8qsrfglskc77y2nqffpwrj0nm9gp9xa29xgqqsplmiwcp2pi";
-    x86_64-darwin = "1b5yg9zdvn4c0zxd4vh6p2mjsmvrxjcav34xnrj5883y0d61yfyi";
-    aarch64-darwin = "161vq91cc9d1czn7z55jy260i5f1qdkr23vshjzaqij6xh5hw3hz";
+    x86_64-linux = "1qgx8gafa70l91x3z57lshvsfgq4v2flqa50iazjhg8m2asdkwlr";
+    aarch64-linux = "18fhldsn90xdm5ajk533b6hwwz9fl1m884bb5zk5v3fvjlw4bbdf";
+    x86_64-darwin = "04j58ivj82iwb4zmnwfsjx8ji94w1srcmd3sspi3sg126d08n02n";
+    aarch64-darwin = "0rvivr7al1vzbwhjw58v61r8y301pnvg1c3jrqrmnpxdqps73kss";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.0.1/gh-contribs_0.0.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.0.1/gh-contribs_0.0.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.0.1/gh-contribs_0.0.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.0.1/gh-contribs_0.0.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.1.0/gh-contribs_0.1.0_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.1.0/gh-contribs_0.1.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.1.0/gh-contribs_0.1.0_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/Josef-Hlink/gh-contribs/releases/download/v0.1.0/gh-contribs_0.1.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "gh-contribs";
-  version = "0.0.1";
+  version = "0.1.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
