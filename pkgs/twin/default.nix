@@ -12,22 +12,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0xs0j1rgnaggvvrkqfkir5mc9lqp9giky5fjfw65pay5x2cbrmls";
-    aarch64-linux = "1kk7fj51npgr4cysmbiikc0113xcjy9f74rvaq12pr9bs604mm7n";
-    x86_64-darwin = "0ravidyb012bjcnr2w9a1321cdc14k4ciqj3296g7m30ibz7ljl6";
-    aarch64-darwin = "07dpx9d2z4lspw4b9b0lbbkn7n5ri44nmbfi58shhkn384kzc2zw";
+    x86_64-linux = "1176ay0g775c6xw391qiy7qlpan8xf1s69x1jy61x0qkp7m3pmk2";
+    aarch64-linux = "0m2bc68mfgmj5y1jrj4ql0rbwxm2avpfajm79jjarbrawrrn7yg7";
+    x86_64-darwin = "1zib5ly5cgislvjw8spkfnxq0c9hibfk0pwiv6x1pdd208pgwhmd";
+    aarch64-darwin = "0s1bbx3q030ld8qm9vn7r9x3g408iqjswh7gcjszpb4kkscgz3zl";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.3.0/twin_0.3.0_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.3.0/twin_0.3.0_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.3.0/twin_0.3.0_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.3.0/twin_0.3.0_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.0/twin_0.4.0_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.0/twin_0.4.0_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.0/twin_0.4.0_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.0/twin_0.4.0_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "twin";
-  version = "0.3.0";
+  version = "0.4.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -38,9 +38,11 @@ stdenvNoCC.mkDerivation {
   nativeBuildInputs = [ installShellFiles makeWrapper ];
 
   installPhase = ''
+    runHook preInstall
     mkdir -p $out/bin
     cp -vr ./twin $out/bin/twin
     wrapProgram $out/bin/twin --prefix PATH : ${lib.makeBinPath ([ tmux fzf ])}
+    runHook postInstall
   '';
 
   meta = {
