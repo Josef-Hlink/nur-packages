@@ -12,22 +12,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "0wzz0q7hy2ykk9mpiwdb12h3smcfly5hs4rb50gpj82qq0p3vr84";
-    aarch64-linux = "0bdb1lwg7j8wzvmwswwnmifgqcfh2nr4kjs35rnd5wl08x6yhbzd";
-    x86_64-darwin = "1k74f9pfl1g4yi9f9s5xr3x113gi7h2d4cqwk3dwrcndyamly4ri";
-    aarch64-darwin = "1y50a6vcsqz70x22dzabrdd7r58yj0mxs15kfjax0i3xx3ihv2a9";
+    x86_64-linux = "1n1dglcwrlvsy8g4n9smgwjmyxmp30yw142winmbbm0i8mmdrx3q";
+    aarch64-linux = "1mjv29h0yqmvzqrn47b63bpn4506rc6myqigyyh3b8rr84zs42m4";
+    x86_64-darwin = "10j65nks1n1g7jmvrn3ymv06956pws8f3f0kwc3w9d2jd0hn3y88";
+    aarch64-darwin = "0hml141iznj74yxhjwi19zv071dxmfxmiri7p26jkblf8kly5ld2";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.1/twin_0.4.1_linux_amd64.tar.gz";
-    aarch64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.1/twin_0.4.1_linux_arm64.tar.gz";
-    x86_64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.1/twin_0.4.1_darwin_amd64.tar.gz";
-    aarch64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.1/twin_0.4.1_darwin_arm64.tar.gz";
+    x86_64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.2/twin_0.4.2_linux_amd64.tar.gz";
+    aarch64-linux = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.2/twin_0.4.2_linux_arm64.tar.gz";
+    x86_64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.2/twin_0.4.2_darwin_amd64.tar.gz";
+    aarch64-darwin = "https://github.com/Josef-Hlink/twin/releases/download/v0.4.2/twin_0.4.2_darwin_arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "twin";
-  version = "0.4.1";
+  version = "0.4.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
